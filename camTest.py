@@ -77,6 +77,8 @@ while cap.isOpened():
     cv2.imshow('ASL Recognition', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+    if cv2.getWindowProperty('ASL Recognition', cv2.WND_PROP_VISIBLE) < 1:
+        break
 
 cap.release()
 cv2.destroyAllWindows()

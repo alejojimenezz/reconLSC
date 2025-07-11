@@ -7,7 +7,6 @@ def distancia(p1, p2):
 def hand_map(landmarks):
     HandLandmark = mp.solutions.hands.HandLandmark
     return {
-        # tip -> dip -> pip -> mcp
         'wrist': landmarks[HandLandmark.WRIST],
         'thumb_cmc': landmarks[HandLandmark.THUMB_CMC],
         'thumb_cmc': landmarks[HandLandmark.THUMB_MCP],
