@@ -1,2 +1,7 @@
-# reconLSC
-Proyecto - Sensores y Actuadores - Programa de reconocimiento de letras del Lenguaje de Señas Colombiano
+# Reconocimiento de Lenguaje de Señas Colombiano (LSC)
+
+## Librerias
+
+### Mediapipe
+
+### OpenCV (cv2)
