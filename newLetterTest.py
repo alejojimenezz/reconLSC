@@ -42,10 +42,10 @@ def letra_e(landmarks):
     p = hand_map(landmarks)
     return (
         distancia(p['thumb_tip'], p['wrist']) < 0.25 and
-        p['index_tip'].y < p['index_pip'].y and
-        p['middle_tip'].y < p['middle_pip'].y and
-        p['ring_tip'].y < p['ring_pip'].y and
-        p['pinky_tip'].y < p['pinky_pip'].y
+        p['index_tip'].y > p['index_pip'].y and
+        p['middle_tip'].y > p['middle_pip'].y and
+        p['ring_tip'].y > p['ring_pip'].y and
+        p['pinky_tip'].y > p['pinky_pip'].y
     )
 ###########################################################################################################
 
@@ -64,7 +64,7 @@ while cap.isOpened():
             letra = None
             
             # ---- Nueva letra ----
-            if letra_b(hand_landmarks.landmark):
+            if letra_e(hand_landmarks.landmark):
                 letra = "E"
 
             # Mostrar letra
