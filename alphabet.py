@@ -33,7 +33,7 @@ def hand_map(landmarks):
 def letra_a(landmarks):
     p = hand_map(landmarks)
     return (
-        distancia(p['thumb_tip'], p['index_mcp']) < 0.1 and
+        distancia(p['thumb_tip'], p['index_pip']) < 0.1 and
         p['index_tip'].y > p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
@@ -53,8 +53,9 @@ def letra_b(landmarks):
 def letra_c(landmarks):
     p = hand_map(landmarks)
     return (
-        distancia(p['index_tip'], p['wrist']) < 0.3 and
-        distancia(p['middle_tip'], p['wrist']) < 0.3
+        distancia(p['index_tip'], p['wrist']) < 0.45 and
+        distancia(p['middle_tip'], p['wrist']) < 0.45 and
+        distancia(p['index_tip'], p['thumb_tip']) > 0.15
     )
 
 def letra_d(landmarks):
@@ -70,7 +71,11 @@ def letra_d(landmarks):
 def letra_e(landmarks):
     p = hand_map(landmarks)
     return (
-        distancia(p['thumb_tip'], p['wrist']) < 0.25 and
+        distancia(p['thumb_tip'], p['wrist']) < 0.3 and
+        distancia(p['index_tip'], p['index_mcp']) < 0.1 and
+        distancia(p['middle_tip'], p['middle_mcp']) < 0.1 and
+        distancia(p['ring_tip'], p['ring_mcp']) < 0.1 and
+        distancia(p['pinky_tip'], p['pinky_mcp']) < 0.1 and
         p['index_tip'].y > p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
