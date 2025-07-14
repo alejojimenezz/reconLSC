@@ -60,20 +60,21 @@ def letra_c(landmarks):
 def letra_d(landmarks):
     p = hand_map(landmarks)
     return (
-        p['index_tip'].y < p['index_pip'].y and 
-        p['thumb_tip'].x < p['thumb_ip'].x and
-        p['middle_tip'].y > p['middle_pip'].y and
-        p['ring_tip'].y > p['ring_pip'].y and
+        distancia(p['thumb_tip'], p['middle_tip']) < 0.1 and
+        p['index_tip'].y < p['index_pip'].y and
+        p['middle_tip'].y > p['middle_pip'].y and 
+        p['ring_tip'].y > p['ring_pip'].y and 
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
 def letra_l(landmarks):
     p = hand_map(landmarks)
     return (
+        distancia(p['thumb_tip'], p['middle_tip']) > 0.15 and
+        p['thumb_tip'].x < p['thumb_ip'].x and
         p['index_tip'].y < p['index_pip'].y and
-        distancia(p['thumb_tip'], p['index_mcp']) > 0.15 and
-        p['middle_tip'].y > p['middle_pip'].y and 
-        p['ring_tip'].y > p['ring_pip'].y and 
+        p['middle_tip'].y > p['middle_pip'].y and
+        p['ring_tip'].y > p['ring_pip'].y and
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
@@ -82,5 +83,30 @@ static_alphabet = {
     "B": letra_b,
     "C": letra_c,
     "D": letra_d,
+    # "E": letra_e,
+    # "F": letra_f,
+    # "I": letra_i,
+    # "K": letra_k,
     "L": letra_l,
+    # "M": letra_m,
+    # "N": letra_n,
+    # "O": letra_o,
+    # "P": letra_p,
+    # "Q": letra_q,
+    # "R": letra_r,
+    # "T": letra_t,
+    # "U": letra_u,
+    # "V": letra_v,
+    # "W": letra_w,
+    # "X": letra_x,
+    # "Y": letra_y,
+}
+
+dynamic_alphabet = {
+    # "G": letra_g,
+    # "H": letra_h,
+    # "J": letra_j,
+    # "NN": letra_nn,
+    # "S": letra_s,
+    # "Z": letra_z,
 }
