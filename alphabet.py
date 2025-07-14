@@ -43,6 +43,7 @@ def letra_a(landmarks):
 def letra_b(landmarks):
     p = hand_map(landmarks)
     return (
+        distancia(p['thumb_tip'], p['wrist']) < 0.25 and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y < p['middle_pip'].y and
         p['ring_tip'].y < p['ring_pip'].y and
