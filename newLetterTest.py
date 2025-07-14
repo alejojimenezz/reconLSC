@@ -38,14 +38,15 @@ def hand_map(landmarks):
     }
 
 # Funcion para alphabet.py #################################################################################
-def letra_i(landmarks):
+def letra_k(landmarks):
     p = hand_map(landmarks)
     return (
-        p['thumb_tip'].x > p['thumb_ip'].x and
-        p['index_tip'].y > p['index_pip'].y and
-        p['middle_tip'].y > p['middle_pip'].y and
+        distancia(p['thumb_tip'], p['middle_pip']) < 0.1 and
+        p['thumb_tip'].y < p['thumb_ip'].y and
+        p['index_tip'].y < p['index_pip'].y and
+        p['middle_tip'].y < p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
-        p['pinky_tip'].y < p['pinky_pip'].y
+        p['pinky_tip'].y > p['pinky_pip'].y
     )
 ###########################################################################################################
 
@@ -64,8 +65,8 @@ while cap.isOpened():
             letra = None
             
             # ---- Nueva letra ----
-            if letra_i(hand_landmarks.landmark):
-                letra = "I"
+            if letra_k(hand_landmarks.landmark):
+                letra = "K"
 
             # Mostrar letra
             if letra:

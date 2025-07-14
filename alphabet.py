@@ -97,6 +97,17 @@ def letra_i(landmarks):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
+def letra_k(landmarks):
+    p = hand_map(landmarks)
+    return (
+        distancia(p['thumb_tip'], p['middle_pip']) < 0.1 and
+        p['thumb_tip'].y < p['thumb_ip'].y and
+        p['index_tip'].y < p['index_pip'].y and
+        p['middle_tip'].y < p['middle_pip'].y and
+        p['ring_tip'].y > p['ring_pip'].y and
+        p['pinky_tip'].y > p['pinky_pip'].y
+    )
+
 def letra_l(landmarks):
     p = hand_map(landmarks)
     return (
@@ -116,7 +127,7 @@ static_alphabet = {
     "E": letra_e,
     "F": letra_f,
     "I": letra_i,
-    # "K": letra_k,
+    "K": letra_k,
     "L": letra_l,
     # "M": letra_m,
     # "N": letra_n,
