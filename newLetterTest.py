@@ -64,8 +64,11 @@ while cap.isOpened():
             
             letra = None
             
+            p = hand_map(hand_landmarks.landmark)
+            ref = distancia(p['wrist'], p['middle_tip'])
+
             # ---- Nueva letra ----
-            if letra_k(hand_landmarks.landmark):
+            if letra_k(p, ref):
                 letra = "K"
 
             # Mostrar letra

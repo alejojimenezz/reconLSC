@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp
-from alphabet import static_alphabet
+from alphabet import static_alphabet, hand_map, distancia
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(min_detection_confidence=0.7, min_tracking_confidence=0.7)
@@ -22,8 +22,11 @@ while cap.isOpened():
             
             letter = None
 
+            p = hand_map(hand_landmarks.landmark)
+            ref = distancia(p['wrist'], p['middle_tip'])
+
             for key, func in static_alphabet.items():
-                if func(hand_landmarks.landmark):
+                if func(p, ref):
                     letter = key
                     break
 

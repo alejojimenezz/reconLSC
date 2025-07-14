@@ -30,70 +30,63 @@ def hand_map(landmarks):
         'pinky_tip': landmarks[HandLandmark.PINKY_TIP]          
     }
 
-def letra_a(landmarks):
-    p = hand_map(landmarks)
+def letra_a(p, ref):
     return (
-        distancia(p['thumb_tip'], p['index_pip']) < 0.1 and
+        distancia(p['thumb_tip'], p['index_pip'])/ref < 0.1/ref and
         p['index_tip'].y > p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_b(landmarks):
-    p = hand_map(landmarks)
+def letra_b(p, ref):
     return (
-        distancia(p['thumb_tip'], p['wrist']) < 0.25 and
+        distancia(p['thumb_tip'], p['middle_mcp'])/ref < 0.1/ref and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y < p['middle_pip'].y and
         p['ring_tip'].y < p['ring_pip'].y and
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
-def letra_c(landmarks):
-    p = hand_map(landmarks)
+def letra_c(p, ref):
     return (
-        distancia(p['index_tip'], p['wrist']) < 0.45 and
-        distancia(p['middle_tip'], p['wrist']) < 0.45 and
-        distancia(p['index_tip'], p['thumb_tip']) > 0.15
+        distancia(p['index_tip'], p['wrist'])/ref < 0.45/ref and
+        distancia(p['middle_tip'], p['wrist'])/ref < 0.45/ref and
+        distancia(p['index_tip'], p['thumb_tip'])/ref > 0.15/ref
     )
 
-def letra_d(landmarks):
-    p = hand_map(landmarks)
+def letra_d(p, ref):
     return (
-        distancia(p['thumb_tip'], p['middle_tip']) < 0.1 and
+        distancia(p['thumb_tip'], p['middle_tip'])/ref < 0.1/ref and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and 
         p['ring_tip'].y > p['ring_pip'].y and 
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_e(landmarks):
-    p = hand_map(landmarks)
+def letra_e(p, ref):
     return (
-        distancia(p['thumb_tip'], p['wrist']) < 0.3 and
-        distancia(p['index_tip'], p['index_mcp']) < 0.1 and
-        distancia(p['middle_tip'], p['middle_mcp']) < 0.1 and
-        distancia(p['ring_tip'], p['ring_mcp']) < 0.1 and
-        distancia(p['pinky_tip'], p['pinky_mcp']) < 0.1 and
+        distancia(p['thumb_tip'], p['wrist'])/ref < 0.3/ref and
+        distancia(p['index_tip'], p['index_mcp'])/ref < 0.1/ref and
+        distancia(p['middle_tip'], p['middle_mcp'])/ref < 0.1/ref and
+        distancia(p['ring_tip'], p['ring_mcp'])/ref < 0.1/ref and
+        distancia(p['pinky_tip'], p['pinky_mcp'])/ref < 0.1/ref and
         p['index_tip'].y > p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_f(landmarks):
-    p = hand_map(landmarks)
+def letra_f(p, ref):
     return (
-        distancia(p['thumb_tip'], p['index_mcp']) < 0.1 and
+        distancia(p['thumb_tip'], p['index_mcp'])/ref < 0.1/ref and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_i(landmarks):
-    p = hand_map(landmarks)
+def letra_i(p, ref):
     return (
         p['thumb_tip'].x > p['thumb_ip'].x and
         p['index_tip'].y > p['index_pip'].y and
@@ -102,10 +95,9 @@ def letra_i(landmarks):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
-def letra_k(landmarks):
-    p = hand_map(landmarks)
+def letra_k(p, ref):
     return (
-        distancia(p['thumb_tip'], p['middle_pip']) < 0.1 and
+        distancia(p['thumb_tip'], p['middle_pip'])/ref < 0.1/ref and
         p['thumb_tip'].y < p['thumb_ip'].y and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y < p['middle_pip'].y and
@@ -113,10 +105,9 @@ def letra_k(landmarks):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_l(landmarks):
-    p = hand_map(landmarks)
+def letra_l(p, ref):
     return (
-        distancia(p['thumb_tip'], p['middle_tip']) > 0.15 and
+        distancia(p['thumb_tip'], p['middle_tip'])/ref > 0.15/ref and
         p['thumb_tip'].x < p['thumb_ip'].x and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
