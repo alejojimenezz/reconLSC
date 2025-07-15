@@ -51,11 +51,11 @@ def letra_b(p, ref):
 def letra_c(p, ref):
     return (
         distancia(p['index_tip'], p['wrist'])/ref < 0.45/ref and
-        distancia(p['ring_tip'], p['wrist'])/ref < 1 and
-        0.2 < distancia(p['index_tip'], p['index_mcp'])/ref < 0.6 and
-        0.2 < distancia(p['middle_tip'], p['middle_mcp'])/ref < 0.6 and
-        0.2 < distancia(p['ring_tip'], p['ring_mcp'])/ref < 0.6 and
-        0.2 < distancia(p['pinky_tip'], p['pinky_mcp'])/ref < 0.6 and
+        distancia(p['ring_tip'], p['wrist'])/ref < 1.2 and
+        0.2 < distancia(p['index_tip'], p['index_mcp'])/ref < 0.7 and
+        0.2 < distancia(p['middle_tip'], p['middle_mcp'])/ref < 0.7 and
+        0.2 < distancia(p['ring_tip'], p['ring_mcp'])/ref < 0.7 and
+        0.2 < distancia(p['pinky_tip'], p['pinky_mcp'])/ref < 0.7 and
         0.15 < distancia(p['middle_tip'], p['thumb_tip'])/ref < 0.4
     )
 
@@ -120,6 +120,17 @@ def letra_l(p, ref):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
+def letra_o(p, ref):
+    return (
+        distancia(p['index_tip'], p['wrist'])/ref < 0.45/ref and
+        distancia(p['ring_tip'], p['wrist'])/ref < 1.2 and
+        0.2 < distancia(p['index_tip'], p['index_mcp'])/ref < 0.7 and
+        0.2 < distancia(p['middle_tip'], p['middle_mcp'])/ref < 0.7 and
+        0.2 < distancia(p['ring_tip'], p['ring_mcp'])/ref < 0.7 and
+        0.2 < distancia(p['pinky_tip'], p['pinky_mcp'])/ref < 0.7 and
+        distancia(p['middle_tip'], p['thumb_tip'])/ref < 0.15
+    )
+
 static_alphabet = {
     "A": letra_a,
     "B": letra_b,
@@ -132,7 +143,7 @@ static_alphabet = {
     "L": letra_l,
     # "M": letra_m,
     # "N": letra_n,
-    # "O": letra_o,
+    "O": letra_o,
     # "P": letra_p,
     # "Q": letra_q,
     # "R": letra_r,
