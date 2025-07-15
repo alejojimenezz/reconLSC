@@ -128,6 +128,14 @@ def letra_m(p, ref):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
+def letra_n(p, ref):
+    return (
+        p['index_tip'].y > p['index_pip'].y and
+        p['middle_tip'].y > p['middle_pip'].y and
+        p['ring_tip'].y < p['ring_pip'].y and
+        p['pinky_tip'].y < p['pinky_pip'].y
+    )
+
 def letra_o(p, ref):
     return (
         distancia(p['index_tip'], p['wrist'])/ref < 0.45/ref and
@@ -150,7 +158,7 @@ static_alphabet = {
     "K": letra_k,
     "L": letra_l,
     "M": letra_m,
-    # "N": letra_n,
+    "N": letra_n,
     "O": letra_o,
     # "P": letra_p,
     # "Q": letra_q,
