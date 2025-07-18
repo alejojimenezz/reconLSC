@@ -147,6 +147,18 @@ def letra_o(p, ref):
         distancia(p['middle_tip'], p['thumb_tip'])/ref < 0.15
     )
 
+def letra_q(p, ref):
+    return (
+        distancia(p['index_tip'], p['thumb_tip'])/ref < 0.2 and
+        distancia(p['middle_tip'], p['thumb_tip'])/ref < 0.2 and
+        distancia(p['ring_tip'], p['thumb_tip'])/ref < 0.2 and
+        p['thumb_tip'].y < p['thumb_mcp'].y and
+        p['index_tip'].y < p['index_pip'].y and
+        p['middle_tip'].y < p['middle_pip'].y and
+        p['ring_tip'].y < p['ring_pip'].y and
+        p['pinky_tip'].y < p['pinky_pip'].y
+    )
+
 def letra_v(p, ref):
     return (
         p['index_tip'].y < p['index_pip'].y and
@@ -177,7 +189,7 @@ static_alphabet = {
     "N": letra_n,
     "O": letra_o,
     # "P": letra_p,
-    # "Q": letra_q,
+    "Q": letra_q,
     # "R": letra_r,
     # "T": letra_t,
     # "U": letra_u,
