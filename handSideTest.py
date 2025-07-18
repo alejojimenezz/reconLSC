@@ -37,19 +37,9 @@ def hand_map(landmarks):
         'pinky_tip': landmarks[HandLandmark.PINKY_TIP]          
     }
 
-# Funcion para alphabet.py #################################################################################
-def letra_r(p, ref):
-    return (
-        p['index_tip'].y < p['index_pip'].y and
-        p['middle_tip'].y < p['middle_pip'].y and
-        p['index_tip'].x < p['middle_tip'].x and
-        p['ring_tip'].y > p['ring_pip'].y and
-        p['pinky_tip'].y > p['pinky_pip'].y
-    )
-###########################################################################################################
-
 while cap.isOpened():
     ret, frame = cap.read()
+    frame = cv2.flip(frame, 1)
     if not ret:
         continue
     
@@ -57,21 +47,14 @@ while cap.isOpened():
     results = hands.process(rgb_frame)
     
     if results.multi_hand_landmarks:
-        for hand_landmarks in results.multi_hand_landmarks:
+
+        for hand_landmarks, hand_label in zip(results.multi_hand_landmarks, results.multi_handedness):
             mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
             
-            letra = None
-            
-            p = hand_map(hand_landmarks.landmark)
-            ref = distancia(p['wrist'], p['middle_tip'])
+            label = hand_label.classification[0].label  # 'Left' o 'Right'
 
-            # ---- Nueva letra ----
-            if letra_r(p, ref):
-                letra = "R"
-
-            # Mostrar letra
-            if letra:
-                cv2.putText(frame, f"Letra: {letra}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            if label:
+                cv2.putText(frame, f"Hand: {label}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     
     cv2.imshow('ASL Recognition', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
