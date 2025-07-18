@@ -16,7 +16,7 @@ def hand_map(landmarks):
     return {
         'wrist': landmarks[HandLandmark.WRIST],
         'thumb_cmc': landmarks[HandLandmark.THUMB_CMC],
-        'thumb_cmc': landmarks[HandLandmark.THUMB_MCP],
+        'thumb_mcp': landmarks[HandLandmark.THUMB_MCP],
         'thumb_ip': landmarks[HandLandmark.THUMB_IP],
         'thumb_tip': landmarks[HandLandmark.THUMB_TIP],
         'index_mcp': landmarks[HandLandmark.INDEX_FINGER_MCP],
@@ -38,12 +38,16 @@ def hand_map(landmarks):
     }
 
 # Funcion para alphabet.py #################################################################################
-def letra_v(p, ref):
+def letra_q(p, ref):
     return (
+        distancia(p['index_tip'], p['thumb_tip'])/ref < 0.2 and
+        distancia(p['middle_tip'], p['thumb_tip'])/ref < 0.2 and
+        distancia(p['ring_tip'], p['thumb_tip'])/ref < 0.2 and
+        p['thumb_tip'].y < p['thumb_mcp'].y and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y < p['middle_pip'].y and
-        p['ring_tip'].y > p['ring_pip'].y and
-        p['pinky_tip'].y > p['pinky_pip'].y
+        p['ring_tip'].y < p['ring_pip'].y and
+        p['pinky_tip'].y < p['pinky_pip'].y
     )
 ###########################################################################################################
 
@@ -65,8 +69,8 @@ while cap.isOpened():
             ref = distancia(p['wrist'], p['middle_tip'])
 
             # ---- Nueva letra ----
-            if letra_v(p, ref):
-                letra = "V"
+            if letra_q(p, ref):
+                letra = "Q"
 
             # Mostrar letra
             if letra:

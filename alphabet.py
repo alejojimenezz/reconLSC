@@ -9,7 +9,7 @@ def hand_map(landmarks):
     return {
         'wrist': landmarks[HandLandmark.WRIST],
         'thumb_cmc': landmarks[HandLandmark.THUMB_CMC],
-        'thumb_cmc': landmarks[HandLandmark.THUMB_MCP],
+        'thumb_mcp': landmarks[HandLandmark.THUMB_MCP],
         'thumb_ip': landmarks[HandLandmark.THUMB_IP],
         'thumb_tip': landmarks[HandLandmark.THUMB_TIP],
         'index_mcp': landmarks[HandLandmark.INDEX_FINGER_MCP],
