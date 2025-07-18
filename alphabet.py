@@ -30,7 +30,7 @@ def hand_map(landmarks):
         'pinky_tip': landmarks[HandLandmark.PINKY_TIP]          
     }
 
-def letra_a(p, ref):
+def letra_a(p, ref, label):
     return (
         distancia(p['thumb_tip'], p['index_pip'])/ref < 0.3 and
         p['index_tip'].y > p['index_pip'].y and
@@ -39,7 +39,7 @@ def letra_a(p, ref):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_b(p, ref):
+def letra_b(p, ref, label):
     return (
         distancia(p['thumb_tip'], p['middle_mcp'])/ref < 0.25 and
         p['index_tip'].y < p['index_pip'].y and
@@ -48,7 +48,7 @@ def letra_b(p, ref):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
-def letra_c(p, ref):
+def letra_c(p, ref, label):
     return (
         distancia(p['index_tip'], p['wrist'])/ref < 0.45/ref and
         distancia(p['ring_tip'], p['wrist'])/ref < 1.2 and
@@ -59,7 +59,7 @@ def letra_c(p, ref):
         0.15 < distancia(p['middle_tip'], p['thumb_tip'])/ref < 0.4
     )
 
-def letra_d(p, ref):
+def letra_d(p, ref, label):
     return (
         distancia(p['thumb_tip'], p['middle_tip'])/ref < 0.2 and
         p['index_tip'].y < p['index_pip'].y and
@@ -68,7 +68,7 @@ def letra_d(p, ref):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_e(p, ref):
+def letra_e(p, ref, label):
     return (
         distancia(p['thumb_tip'], p['middle_mcp'])/ref < 0.3 and
         distancia(p['index_tip'], p['index_mcp'])/ref < 0.1/ref and
@@ -81,7 +81,7 @@ def letra_e(p, ref):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_f(p, ref):
+def letra_f(p, ref, label):
     return (
         distancia(p['thumb_tip'], p['index_pip'])/ref < 0.3 and
         p['index_tip'].y < p['index_pip'].y and
@@ -90,7 +90,7 @@ def letra_f(p, ref):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_i(p, ref):
+def letra_i(p, ref, label):
     return (
         p['thumb_tip'].x > p['thumb_ip'].x and
         p['index_tip'].y > p['index_pip'].y and
@@ -99,7 +99,7 @@ def letra_i(p, ref):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
-def letra_k(p, ref):
+def letra_k(p, ref, label):
     return (
         distancia(p['thumb_tip'], p['middle_pip'])/ref < 0.2 and
         p['thumb_tip'].y < p['thumb_ip'].y and
@@ -109,7 +109,7 @@ def letra_k(p, ref):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_l(p, ref):
+def letra_l(p, ref, label):
     return (
         distancia(p['thumb_tip'], p['middle_tip'])/ref > 0.2 and
         distancia(p['thumb_tip'], p['index_pip'])/ref > 0.5 and
@@ -120,7 +120,7 @@ def letra_l(p, ref):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_m(p, ref):
+def letra_m(p, ref, label):
     return (
         p['index_tip'].y > p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
@@ -128,7 +128,7 @@ def letra_m(p, ref):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
-def letra_n(p, ref):
+def letra_n(p, ref, label):
     return (
         p['index_tip'].y > p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
@@ -136,7 +136,7 @@ def letra_n(p, ref):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
-def letra_o(p, ref):
+def letra_o(p, ref, label):
     return (
         distancia(p['index_tip'], p['wrist'])/ref < 0.45/ref and
         distancia(p['ring_tip'], p['wrist'])/ref < 1.2 and
@@ -147,7 +147,7 @@ def letra_o(p, ref):
         distancia(p['middle_tip'], p['thumb_tip'])/ref < 0.15
     )
 
-def letra_q(p, ref):
+def letra_q(p, ref, label):
     return (
         distancia(p['index_tip'], p['thumb_tip'])/ref < 0.2 and
         distancia(p['middle_tip'], p['thumb_tip'])/ref < 0.2 and
@@ -159,7 +159,7 @@ def letra_q(p, ref):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
-def letra_v(p, ref):
+def letra_v(p, ref, label):
     return (
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y < p['middle_pip'].y and
@@ -167,7 +167,7 @@ def letra_v(p, ref):
         p['pinky_tip'].y > p['pinky_pip'].y
     )
 
-def letra_w(p, ref):
+def letra_w(p, ref, label):
     return (
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y < p['middle_pip'].y and

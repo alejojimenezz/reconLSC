@@ -10,6 +10,7 @@ cap = cv2.VideoCapture(0)
 
 while cap.isOpened():
     ret, frame = cap.read()
+    frame = cv2.flip(frame, 1)
     if not ret:
         continue
     
@@ -17,16 +18,18 @@ while cap.isOpened():
     results = hands.process(rgb_frame)
     
     if results.multi_hand_landmarks:
-        for hand_landmarks in results.multi_hand_landmarks:
+
+        for hand_landmarks, hand_label in zip(results.multi_hand_landmarks, results.multi_handedness):
             mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
             
             letter = None
+            label = hand_label.classification[0].label
 
             p = hand_map(hand_landmarks.landmark)
             ref = distancia(p['wrist'], p['middle_tip'])
 
             for key, func in static_alphabet.items():
-                if func(p, ref):
+                if func(p, ref, label):
                     letter = key
                     break
 
