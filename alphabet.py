@@ -159,6 +159,24 @@ def letra_q(p, ref, label):
         p['pinky_tip'].y < p['pinky_pip'].y
     )
 
+def letra_r(p, ref, label):
+    if label == 'Right':
+        return (
+            p['index_tip'].y < p['index_pip'].y and
+            p['middle_tip'].y < p['middle_pip'].y and
+            p['index_tip'].x > p['middle_tip'].x and
+            p['ring_tip'].y > p['ring_pip'].y and
+            p['pinky_tip'].y > p['pinky_pip'].y
+        )
+    else:
+        return (
+            p['index_tip'].y < p['index_pip'].y and
+            p['middle_tip'].y < p['middle_pip'].y and
+            p['index_tip'].x < p['middle_tip'].x and
+            p['ring_tip'].y > p['ring_pip'].y and
+            p['pinky_tip'].y > p['pinky_pip'].y
+        )
+
 def letra_v(p, ref, label):
     return (
         p['index_tip'].y < p['index_pip'].y and
@@ -190,7 +208,7 @@ static_alphabet = {
     "O": letra_o,
     # "P": letra_p,
     "Q": letra_q,
-    # "R": letra_r,
+    "R": letra_r,
     # "T": letra_t,
     # "U": letra_u,
     "V": letra_v,
