@@ -38,15 +38,33 @@ def hand_map(landmarks):
     }
 
 # Funcion para alphabet.py #################################################################################
-def letra_u(p, ref, label):
+def letra_p(p, ref, label):
     return (
-        distancia(p['thumb_tip'], p['middle_dip'])/ref < 0.5 and
+        distancia(p['middle_tip'], p['index_pip'])/ref < 0.3 and
+        p['index_tip'].y > p['index_pip'].y and
+        #p['middle_tip'].y > p['middle_pip'].y and
+        p['ring_tip'].y < p['ring_pip'].y and
+        p['pinky_tip'].y < p['pinky_pip'].y
+    )
+
+def letra_t(p, ref, label):
+    return (
+        distancia(p['index_pip'], p['thumb_ip'])/ref < 0.3 and
+        #p['index_tip'].y > p['index_pip'].y and
+        p['middle_tip'].y < p['middle_pip'].y and
+        p['ring_tip'].y < p['ring_pip'].y and
+        p['pinky_tip'].y < p['pinky_pip'].y
+    )
+
+def letra_x(p, ref, label):
+    return (
+        distancia(p['thumb_tip'], p['middle_mcp'])/ref < 0.25 and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
-        p['pinky_tip'].y < p['pinky_pip'].y
+        p['pinky_tip'].y > p['pinky_pip'].y
     )
-###########################################################################################################
+############################################################################################################
 
 while cap.isOpened():
     ret, frame = cap.read()
@@ -68,8 +86,8 @@ while cap.isOpened():
             ref = distancia(p['wrist'], p['middle_tip'])
 
             # ---- Nueva letra ----
-            if letra_u(p, ref, label):
-                letra = "U"
+            if letra_p(p, ref, label):  # Cambiar nombre de funcion
+                letra = "P"             # Cambiar letra en diccionario
 
             # Mostrar letra
             if letra:
