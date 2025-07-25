@@ -111,15 +111,26 @@ def letra_k(p, ref, label):
     )
 
 def letra_l(p, ref, label):
-    return (
-        distancia(p['thumb_tip'], p['middle_tip'])/ref > 0.2 and
-        distancia(p['thumb_tip'], p['index_pip'])/ref > 0.5 and
-        p['thumb_tip'].x < p['thumb_ip'].x and
-        p['index_tip'].y < p['index_pip'].y and
-        p['middle_tip'].y > p['middle_pip'].y and
-        p['ring_tip'].y > p['ring_pip'].y and
-        p['pinky_tip'].y > p['pinky_pip'].y
-    )
+    if label == 'Right':
+        return (
+            distancia(p['thumb_tip'], p['middle_tip'])/ref > 0.2 and
+            distancia(p['thumb_tip'], p['index_pip'])/ref > 0.5 and
+            p['thumb_tip'].x < p['thumb_ip'].x and
+            p['index_tip'].y < p['index_pip'].y and
+            p['middle_tip'].y > p['middle_pip'].y and
+            p['ring_tip'].y > p['ring_pip'].y and
+            p['pinky_tip'].y > p['pinky_pip'].y
+        )
+    else:
+        return (
+            distancia(p['thumb_tip'], p['middle_tip'])/ref > 0.2 and
+            distancia(p['thumb_tip'], p['index_pip'])/ref > 0.5 and
+            p['thumb_tip'].x > p['thumb_ip'].x and
+            p['index_tip'].y < p['index_pip'].y and
+            p['middle_tip'].y > p['middle_pip'].y and
+            p['ring_tip'].y > p['ring_pip'].y and
+            p['pinky_tip'].y > p['pinky_pip'].y
+        )
 
 def letra_m(p, ref, label):
     return (
