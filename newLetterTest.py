@@ -93,10 +93,10 @@ while cap.isOpened():
             if letra:
                 cv2.putText(frame, f"Letra: {letra}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
     
-    cv2.imshow('ASL Recognition', frame)
+    cv2.imshow('Reconocimiento LSC', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-    if cv2.getWindowProperty('ASL Recognition', cv2.WND_PROP_VISIBLE) < 1:
+    if cv2.getWindowProperty('Reconocimiento LSC', cv2.WND_PROP_VISIBLE) < 1:
         break
 
 cap.release()
