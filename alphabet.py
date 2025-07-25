@@ -27,7 +27,7 @@ def hand_map(landmarks):
         'pinky_mcp': landmarks[HandLandmark.PINKY_MCP],
         'pinky_pip': landmarks[HandLandmark.PINKY_PIP],
         'pinky_dip': landmarks[HandLandmark.PINKY_DIP],
-        'pinky_tip': landmarks[HandLandmark.PINKY_TIP]          
+        'pinky_tip': landmarks[HandLandmark.PINKY_TIP]
     }
 
 def letra_a(p, ref, label):
@@ -242,7 +242,7 @@ dynamic_alphabet = {
     # "G": letra_g,
     # "H": letra_h,
     # "J": letra_j,
-    # "NN": letra_nn,
+    # "Ñ": letra_ñ,
     # "S": letra_s,
     # "Z": letra_z,
 }
