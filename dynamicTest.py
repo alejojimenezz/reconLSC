@@ -40,7 +40,7 @@ while cap.isOpened():
                     letter = key
                     break
 
-            # Movimiento dinámico para la letra J
+            # Movimiento letra J
             pinky = p['pinky_tip']
             movimientoJ.append((pinky.x, pinky.y))
 
@@ -51,7 +51,7 @@ while cap.isOpened():
                 if dx > 0.05 and dy > 0.05:  # Puedes ajustar estos valores según tu cámara
                     letter = 'J'
 
-            if letter and letter != 'J':
+            if delayTimer == 0 and letter:
                 currentLetter = letter
                 delayTimer = delayTime
 
