@@ -93,7 +93,7 @@ def letra_f(p, ref, label):
 def letra_i(p, ref, label):
     return (
         distancia(p['pinky_tip'], p['wrist'])/ref > 0.5 and
-        distancia(p['thumb_tip'], p['index_dip'])/ref < 0.4 and
+        distancia(p['thumb_tip'], p['index_dip'])/ref < 0.5 and
         p['index_tip'].y > p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
@@ -218,7 +218,7 @@ def letra_w(p, ref, label):
 def letra_y(p, ref, label):
     return (
         distancia(p['pinky_tip'], p['wrist'])/ref > 0.5 and
-        distancia(p['thumb_tip'], p['index_dip'])/ref > 0.4 and
+        distancia(p['thumb_tip'], p['index_dip'])/ref > 0.6 and
         p['index_tip'].y > p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
