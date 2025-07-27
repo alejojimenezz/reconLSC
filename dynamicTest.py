@@ -9,6 +9,9 @@ hands = mp_hands.Hands(min_detection_confidence=0.7, min_tracking_confidence=0.7
 mp_drawing = mp.solutions.drawing_utils
 
 movimientoJ = deque(maxlen=10) # Almacenar 10 puntos de movimiento
+currentLetter = None
+delayTimer = 0
+delayTime = 48 # 24 fps -> 24 = 1 segundo
 
 cap = cv2.VideoCapture(0)
 
@@ -48,17 +51,15 @@ while cap.isOpened():
                 if dx > 0.05 and dy > 0.05:  # Puedes ajustar estos valores según tu cámara
                     letter = 'J'
 
-            delayTime = 48
+            if letter and letter != 'J':
+                currentLetter = letter
+                delayTimer = delayTime
 
-            if letter and letter == 'J':
+
+            if delayTimer > 0:
                 cv2.putText(frame, f"Letra: {letter}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 5)
                 cv2.putText(frame, f"Letra: {letter}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
-                delayTime -= 1
-
-
-            if letter:
-                cv2.putText(frame, f"Letra: {letter}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 5)
-                cv2.putText(frame, f"Letra: {letter}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+                delayTimer -= 1
 
             #cv2.putText(frame, f"ref: {distancia(p['thumb_tip'], p['index_pip'])/ref}", (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
