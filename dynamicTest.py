@@ -11,7 +11,7 @@ mp_drawing = mp.solutions.drawing_utils
 movimientoJ = deque(maxlen=10) # Almacenar 10 puntos de movimiento
 currentLetter = None
 delayTimer = 0
-delayTime = 48 # 24 fps -> 24 = 1 segundo
+delayTime = 120
 
 cap = cv2.VideoCapture(0)
 
@@ -56,7 +56,7 @@ while cap.isOpened():
                 delayTimer = delayTime
 
 
-            if delayTimer > 0:
+            if delayTimer > 0 and currentLetter:
                 cv2.putText(frame, f"Letra: {letter}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 5)
                 cv2.putText(frame, f"Letra: {letter}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
                 delayTimer -= 1
