@@ -40,25 +40,28 @@ def hand_map(landmarks):
 # Funcion para alphabet.py #################################################################################
 def letra_p(p, ref, label):
     return (
-        distancia(p['middle_tip'], p['index_pip'])/ref < 0.3 and
-        p['index_tip'].y > p['index_pip'].y and
-        #p['middle_tip'].y > p['middle_pip'].y and
-        p['ring_tip'].y < p['ring_pip'].y and
-        p['pinky_tip'].y < p['pinky_pip'].y
+        distancia(p['index_tip'], p['middle_pip'])/ref < 0.3 and
+        distancia(p['ring_tip'], p['wrist'])/ref < 0.25 and
+        distancia(p['pinky_tip'], p['wrist'])/ref < 0.25 and
+        p['middle_tip'].y > p['middle_pip'].y
+        
     )
 
 def letra_t(p, ref, label):
-    return (
-        distancia(p['index_pip'], p['thumb_ip'])/ref < 0.3 and
-        #p['index_tip'].y > p['index_pip'].y and
-        p['middle_tip'].y < p['middle_pip'].y and
-        p['ring_tip'].y < p['ring_pip'].y and
-        p['pinky_tip'].y < p['pinky_pip'].y
-    )
+    if label == 'Right':
+        return (
+            distancia(p['index_pip'], p['thumb_ip'])/ref < 0.25 and
+            p['index_tip'].x < p['index_pip'].x
+        )
+    else:
+        return (
+            distancia(p['index_pip'], p['thumb_ip'])/ref < 0.25 and
+            p['index_tip'].x > p['index_pip'].x
+        )
 
 def letra_x(p, ref, label):
     return (
-        distancia(p['thumb_tip'], p['middle_mcp'])/ref < 0.25 and
+        distancia(p['index_tip'], p['middle_pip'])/ref < 0.5 and
         p['index_tip'].y < p['index_pip'].y and
         p['middle_tip'].y > p['middle_pip'].y and
         p['ring_tip'].y > p['ring_pip'].y and
